@@ -1,22 +1,21 @@
-site_name: Resumen Apache2
-site_url: https://framafra.github.io/resumen_Apache2/
+site_name: Tutorial de Docker
+site_author: Paco Mañó
+site_url: https://github.com/framafra/docker
 docs_dir: 'md'
 site_dir: 'docs'
-repo_url: https://github.com/framafra/resumen_Apache2 #para mostrar un link al repositorio
-repo_name: framafra/resumen_Apache2
+repo_url: https://github.com/framafra/docker #para mostrar un link al repositorio
+repo_name: framafra/docker
+
+edit_uri: '' #Suprimir el icono de edición (https://www.mkdocs.org/user-guide/configuration/#edit_uri)
 
 nav:
-    - Home: index.md
-    - Instalación : inst.md
-    - Directorios/Archivos de Configuración: dir.md
-    - Servicio Apache2 : servicio.md
-    - Directivas más importantes : directivas.md
-    - Configuración mínima de un sitio : conf.md
-    - Restringir acceso a una web por IP : restr.md
-    - Añadir o modificar puertos de escucha : puertos.md
-    - Permitir listar el contenido de un directorio : listar.md
-    - Mecanismos de autentificación : mecanismos.md
-
+    - Docker:
+        - ¿Qué es Docker?: docker/docker.md
+        - ¿Qué es una imagen y un contenedor?: docker/imagenvscontenedor.md
+    - Primeros paso:
+        - Instalación: primeros_pasos/instalacion.md
+        - Uso Básico: primeros_pasos/usobasico.md
+        - Hello World de Docker: primeros_pasos/hello.md
 
 theme:
     name: material
@@ -28,17 +27,52 @@ theme:
       scheme: default
       primary: teal
       accent: green
-    favicon: images/apache.png
+    favicon: images/docker.png    
     features:
         #- header.autohide
         - toc.follow
         - toc.integrate
         - search.suggest
-
-
+    logo: images/docker.png
+    icon:
+        admonition:
+            note: octicons/alert-24
+            example: octicons/book-16
 extra:
     generator: false #Muestra en el pie de página que se ha realizado con Mkdocs
     social:
     - icon: fontawesome/solid/paper-plane
-      link: mailto:<email-address>
-    
+      link: mailto:<fj.manofrasquet@edu.gva.es>
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+    - abbr
+    - admonition
+    - attr_list
+    - def_list
+    - footnotes
+    - md_in_html
+    - toc:
+        permalink: true
+        toc_depth: 1
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.highlight
+    - pymdownx.inlinehilite
+    - pymdownx.keys
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tilde       
