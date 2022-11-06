@@ -16,7 +16,27 @@ nav:
         - Instalación: primeros_pasos/instalacion.md
         - Uso Básico: primeros_pasos/usobasico.md
         - Hello World de Docker: primeros_pasos/hello.md
-
+    - Contenedores:
+        - Crear Contenedores - Docker Run: contenedores/dockerun.md
+        - Arrancar/Parar Contenedores: contenedores/arrancar_parar.md
+        - Listar Contenedores: contenedores/listar.md
+        - Copiar ficheros entre anfitrión y contenedores: contenedores/copiar.md
+        - Renombrar Contenedores: contenedores/renombrar.md
+        - Ejemplos:
+            - Ejecución de un contenedor simple: contenedores/ejemplos/simple.md
+            - Ejecución de un contenedor interactivo: contenedores/ejemplos/interactivo.md
+            - Creando un contenedor demonio: contenedores/ejemplos/demonio.md
+            - Creando un contenedor con un servidor web: contenedores/ejemplos/web.md
+            - Configuración de contenedores con variables de entorno: contenedores/ejemplos/variables.md
+    - Imágenes:
+        - Registro de Imágenes.- DockerHub : imagenes/registro.md
+        - Gestión de Imágenes: imagenes/gestion.md
+        - ¿Cómo se organizan las imágenes?: imagenes/organizacion.md
+        - Creación de contenedores desde Imágenes: imagenes/creacion.md
+        - Ejemplo.- Desplegando la aplicación mediawiki: imagenes/mediawiki.md
+    -  Redes en Docker:
+        - Redes: redes/redes.md
+        - Redes Definidas por el Usuario: redes/redes_usuario.md
 theme:
     name: material
     include_search_page: false
@@ -30,9 +50,12 @@ theme:
     favicon: images/docker.png    
     features:
         #- header.autohide
-        - toc.follow
+        - toc.follow0
         - toc.integrate
         - search.suggest
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.top
     logo: images/docker.png
     icon:
         admonition:
