@@ -30,3 +30,11 @@ Esta opción crea el contenedor con las características dadas en opciones, que 
     Vamos arrancar un contenedor utilizando la imagen de Ubuntu 18.04, en modo interactivo, con nombre “ubu18”, al mismo tiempo se nos abrirá un terminal de bash para interactuar. Para ello ejecutaremos:
             
             docker run --name ubu18 -it ubuntu:18.04 /bin/bash
+
+
+
+
+!!! note "Crear contenedores sin arrancarlos: docker run vs docker create"
+
+    El comando “docker run” crea y arranca un contenedor.
+    Si queremos crear un contenedor sin arrancarlo debemos utilizar el comando “docker create”. La descripción completa del comando “docker create” la podéis encontrar en [https://docs.docker.com/engine/reference/commandline/create/](https://docs.docker.com/engine/reference/commandline/create/)

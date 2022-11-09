@@ -18,6 +18,9 @@ Debido a que, dependiendo de la distribución, la forma de instalarlo difiere, e
 * CentOS: [https://docs.docker.com/install/linux/docker-ce/centos/](https://docs.docker.com/install/linux/docker-ce/centos/)
 * Fedora: [https://docs.docker.com/install/linux/docker-ce/fedora/](https://docs.docker.com/install/linux/docker-ce/fedora/)
 
+!!! note Nota
+    
+    Es posible instalar Docker engine desde el repositorio oficial de Ubuntu, pero <u>no está recomendado</u> ya que instala versiones antiguas.
 
 Es recomendable desinstalar las versiones antiguas antes de realizar la instalación y así evitar que pudiesen haber conflictos.
 En sistemas Ubuntu, para eliminar las versiones antiguas, podemos ejecutar la instrucción:

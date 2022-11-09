@@ -20,6 +20,8 @@ nav:
         - Crear Contenedores - Docker Run: contenedores/dockerun.md
         - Arrancar/Parar Contenedores: contenedores/arrancar_parar.md
         - Listar Contenedores: contenedores/listar.md
+        - Inspeccionar Contenedores: contenedores/inspect.md
+        - Ejecutar comandos: contenedores/ejecutar_comando.md
         - Copiar ficheros entre anfitrión y contenedores: contenedores/copiar.md
         - Renombrar Contenedores: contenedores/renombrar.md
         - Ejemplos:
