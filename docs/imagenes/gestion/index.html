@@ -524,6 +524,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../contenedores/inspect/" class="md-nav__link">
+        Inspeccionar Contenedores
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contenedores/ejecutar_comando/" class="md-nav__link">
+        Ejecutar comandos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../contenedores/copiar/" class="md-nav__link">
         Copiar ficheros entre anfitrión y contenedores
       </a>
@@ -551,22 +579,36 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../contenedores/eliminar/" class="md-nav__link">
+        Eliminar contenedores
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" type="checkbox" id="__nav_3_9" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_6">
+        <label class="md-nav__link" for="__nav_3_9">
           Ejemplos
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Ejemplos" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_6">
+        <label class="md-nav__title" for="__nav_3_9">
           <span class="md-nav__icon md-icon"></span>
           Ejemplos
         </label>
@@ -741,8 +783,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../creacion/" class="md-nav__link">
-        Creación de contenedores desde Imágenes
+      <a href="../creacion_contenedores/" class="md-nav__link">
+        Creación de contenedores desde imágenes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creacion_imagenes/" class="md-nav__link">
+        Creación de imágenes desde contenedores
       </a>
     </li>
   
@@ -900,26 +956,12 @@ docker.io/library/ubuntu:20.04
 <p>Si queremos eliminar imágenes descargadas que no vamos a utilizar o hemos descargado por error una versión incorrecta, etc., debemos utilizar el comando:</p>
 <div class="highlight"><pre><span></span><code>$docker rmi ubuntu:20.04
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Eliminar todas las imágenes que no se están utilizando</p>
 <p>Una forma de eliminar todas las imágenes locales que no estén siendo utilizadas por un contenedor, es combinando <code>docker images -q</code> para obtener la lista y <code>docker rmi</code> para eliminar la lista obtenida.</p>
 <div class="highlight"><pre><span></span><code>$docker rmi $(docker images -q)
 </code></pre></div>
-<h2 id="eliminar-contenedores-con-docker-rm">Eliminar contenedores con docker rm<a class="headerlink" href="#eliminar-contenedores-con-docker-rm" title="Permanent link">&para;</a></h2>
-<p>Hay diferentes formas de eliminar contenedores dependiendo de cómo lo queramos hacer:</p>
-<ul>
-<li>
-<p>Si vamos a eliminar un contenedor que está parado previamente.</p>
-<p>$docker rm IDENTIFICADOR/NOMBRE</p>
-</li>
-<li>
-<p>Si queremos parar todos los contenedores que tenemos y borrarlos, hay que realizar dos pasos:</p>
-<p>– Paramos los contenedores (opcional).</p>
-<div class="highlight"><pre><span></span><code>$docker stop $(docker ps -a -q)
-</code></pre></div>
-<p>– Borramos todos los contenedores.</p>
-<div class="highlight"><pre><span></span><code>$docker rm $(docker ps -a -q)
-</code></pre></div>
-</li>
-</ul>
+</div>
 <h2 id="eliminar-todas-la-imagenes-y-contenedores">Eliminar todas la imágenes y contenedores<a class="headerlink" href="#eliminar-todas-la-imagenes-y-contenedores" title="Permanent link">&para;</a></h2>
 <p>Una forma de realizar las operaciones anteriores de golpe, es usando <code>docker system prune -a</code>, que elimina todas las imágenes y contenedores parados.</p>
 <ul>
