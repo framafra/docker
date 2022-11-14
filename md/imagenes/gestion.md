@@ -62,27 +62,10 @@ Si queremos eliminar imágenes descargadas que no vamos a utilizar o hemos desca
 
     $docker rmi ubuntu:20.04
 
-Una forma de eliminar todas las imágenes locales que no estén siendo utilizadas por un contenedor, es combinando ``docker images -q`` para obtener la lista y ``docker rmi`` para eliminar la lista obtenida.
+!!! Note "Eliminar todas las imágenes que no se están utilizando"
+    Una forma de eliminar todas las imágenes locales que no estén siendo utilizadas por un contenedor, es combinando ``docker images -q`` para obtener la lista y ``docker rmi`` para eliminar la lista obtenida.
 
-    $docker rmi $(docker images -q)
-
-## Eliminar contenedores con docker rm
-Hay diferentes formas de eliminar contenedores dependiendo de cómo lo queramos hacer:
-
-- Si vamos a eliminar un contenedor que está parado previamente.
-        
-    $docker rm IDENTIFICADOR/NOMBRE
-
-- Si queremos parar todos los contenedores que tenemos y borrarlos, hay que realizar dos pasos:
-  
-    – Paramos los contenedores (opcional).
-
-        $docker stop $(docker ps -a -q)
-
-    – Borramos todos los contenedores.
-
-        $docker rm $(docker ps -a -q)
-
+        $docker rmi $(docker images -q)
 
 ## Eliminar todas la imágenes y contenedores
 Una forma de realizar las operaciones anteriores de golpe, es usando ``docker system prune -a``, que elimina todas las imágenes y contenedores parados.

@@ -24,6 +24,7 @@ nav:
         - Ejecutar comandos: contenedores/ejecutar_comando.md
         - Copiar ficheros entre anfitrión y contenedores: contenedores/copiar.md
         - Renombrar Contenedores: contenedores/renombrar.md
+        - Eliminar contenedores: contenedores/eliminar.md
         - Ejemplos:
             - Ejecución de un contenedor simple: contenedores/ejemplos/simple.md
             - Ejecución de un contenedor interactivo: contenedores/ejemplos/interactivo.md
@@ -34,7 +35,8 @@ nav:
         - Registro de Imágenes.- DockerHub : imagenes/registro.md
         - Gestión de Imágenes: imagenes/gestion.md
         - ¿Cómo se organizan las imágenes?: imagenes/organizacion.md
-        - Creación de contenedores desde Imágenes: imagenes/creacion.md
+        - Creación de contenedores desde imágenes: imagenes/creacion_contenedores.md
+        - Creación de imágenes desde contenedores: imagenes/creacion_imagenes.md
         - Ejemplo.- Desplegando la aplicación mediawiki: imagenes/mediawiki.md
     -  Redes en Docker:
         - Redes: redes/redes.md
