@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://github.com/framafra/docker/redes/redes_usuario/">
       
       <link rel="icon" href="../../images/docker.png">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.9">
     
     
       
@@ -24,7 +24,7 @@
       <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
         
           
           
@@ -90,9 +90,7 @@
     
       
 
-  
-
-<header class="md-header md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Tutorial de Docker" class="md-header__button md-logo" aria-label="Tutorial de Docker" data-md-component="logo">
       
@@ -171,104 +169,13 @@
     
   </nav>
   
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../docker/docker/" class="md-tabs__link">
-        Docker
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../primeros_pasos/instalacion/" class="md-tabs__link">
-        Primeros paso
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../contenedores/dockerun/" class="md-tabs__link">
-        Contenedores
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../imagenes/registro/" class="md-tabs__link">
-        Imágenes
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../redes/" class="md-tabs__link md-tabs__link--active">
-        Redes en Docker
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -281,12 +188,10 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Tutorial de Docker" class="md-nav__button md-logo" aria-label="Tutorial de Docker" data-md-component="logo">
       
@@ -801,6 +706,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../imagenes/exportar_importar/" class="md-nav__link">
+        Exportar/Importar imágenes locales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../imagenes/mediawiki/" class="md-nav__link">
         Ejemplo.- Desplegando la aplicación mediawiki
       </a>
@@ -949,10 +868,20 @@
         ...
 <span class="o">]</span>
 </code></pre></div>
-<p>Vamos a crear dos contenedores conectados a dicha red:</p>
+<p>En este caso, hemos creado una red simple con los parámetros por defecto. Algunos de los parámetros configurables más interesantes son:</p>
+<ul>
+<li>“--internal”: para red interna. Restringe el acceso desde el exterior.</li>
+<li>“--gateway”: para indicar la puerta de enlace de la red.</li>
+<li>“--ip-range”: delimita el rango de IPs asignables al contenedor.</li>
+<li>“--ipv6”: habilita el uso de IPV6.</li>
+<li>“--subnet”: define la subred en formato CIDR.</li>
+</ul>
+<p>Para más información relacionada con el comando “docker network create” se puede consultar el siguiente enlace: <a href="https://docs.docker.com/engine/reference/commandline/network_create/">https://docs.docker.com/engine/reference/commandline/network_create/</a></p>
+<h2 id="comprobacion-de-la-resolucion-de-nombres-entre-contendedores">Comprobación de la resolución de nombres entre contendedores<a class="headerlink" href="#comprobacion-de-la-resolucion-de-nombres-entre-contendedores" title="Permanent link">&para;</a></h2>
+<p>Creamos un contenedor y lo conectamos a la red que acabamos de crear:</p>
 <p><div class="highlight"><pre><span></span><code>$ docker run -d --name my-apache-app --network red1 -p <span class="m">8080</span>:80 httpd:2.4
 </code></pre></div>
-Lo primero que vamos a comprobar es la resolución DNS:</p>
+Creamos otro contenedor y comprobamos la resolución DNS:</p>
 <div class="highlight"><pre><span></span><code>$ docker run -it --name contenedor1 --network red1 debian bash
 root@98ab5a0c2f0c:/# apt update <span class="o">&amp;&amp;</span> apt install dnsutils -y
 ...
@@ -982,7 +911,7 @@ contenedor1.        <span class="m">600</span> IN  A   <span class="m">172</span
 <p>Podemos conectar "en caliente" un contenedor a una nueva red con:</p>
 <p><div class="highlight"><pre><span></span><code>docker network connect &lt;red&gt; &lt;contenedor&gt;
 </code></pre></div>
-Para desconectarla de una red podemos usar: <code>docker network disconnect</code>.</p>
+Para desconectarla de una red podemos usar: <code>docker network disconnect &lt;red&gt; &lt;contenedor&gt;</code>.</p>
 <p>Tanto al crear un contenedor con el flag <code>--network</code>, como con la instrucción <code>docker network connect</code>, podemos usar algunos otros flags:</p>
 <ul>
 <li><code>--dns</code>: para establecer unos servidores DNS predeterminados.</li>
@@ -1060,10 +989,10 @@ Para desconectarla de una red podemos usar: <code>docker network disconnect</cod
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow0", "toc.integrate", "search.suggest", "navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow0", "toc.integrate", "search.suggest", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>
