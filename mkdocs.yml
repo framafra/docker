@@ -37,6 +37,7 @@ nav:
         - ¿Cómo se organizan las imágenes?: imagenes/organizacion.md
         - Creación de contenedores desde imágenes: imagenes/creacion_contenedores.md
         - Creación de imágenes desde contenedores: imagenes/creacion_imagenes.md
+        - Subir imágenes a Docker Hub: imagenes/subir_imagen_dockerhub.md
         - Exportar/Importar imágenes locales: imagenes/exportar_importar.md
         - Ejemplo.- Desplegando la aplicación mediawiki: imagenes/mediawiki.md
     -  Redes en Docker:
