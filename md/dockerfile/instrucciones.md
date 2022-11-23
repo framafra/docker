@@ -1,13 +1,13 @@
 Alguna de las principales instrucciones son:
 
 * **FROM**: Sirve para especificar la imagen sobre la que voy a construir la mía. Ejemplo: `FROM php:7.4-apache`.
-* **LABEL**: Sirve para añadir metadatos a la imagen mediante clave=valor. Ejemplo: `LABEL company=iesalixar`.
+* **LABEL**: Sirve para añadir metadatos a la imagen mediante clave=valor. Ejemplo: `LABEL company=iesjaumeII`.
 * **COPY**: Para copiar ficheros desde mi equipo a la imagen. Esos ficheros deben estar en el mismo contexto (carpeta o repositorio). Su sintaxis es `COPY [--chown=<usuario>:<grupo>] src dest`. Por ejemplo: `COPY --chown=www-data:www-data myapp /var/www/html`.
 * **ADD**: Es similar a COPY pero tiene funcionalidades adicionales como especificar URLs  y tratar archivos comprimidos.
 * **RUN**: Ejecuta una orden creando una nueva capa. Su sintaxis es `RUN orden` / `RUN ["orden","param1","param2"]`. Ejemplo: `RUN apt update && apt install -y git`. En este caso es muy importante que pongamos la opción `-y` porque en el proceso de construcción no puede haber interacción con el usuario.
 * **WORKDIR**: Establece el directorio de trabajo dentro de la imagen que estoy creando para posteriormente usar las órdenes RUN,COPY,ADD,CMD o ENTRYPOINT. Ejemplo: `WORKDIR /usr/local/apache/htdocs`.
 * **EXPOSE**: Nos da información acerca de qué puertos tendrá abiertos el contenedor cuando se cree uno en base a la imagen que estamos creando. Es meramente informativo.  Ejemplo: `EXPOSE 80`.
-* **USER**: Para especificar (por nombre o UID/GID) el usuario de trabajo para todas las órdenes RUN,CMD Y ENTRYPOINT posteriores. Ejemplos: `USER jenkins` / `USER 1001:10001`.
+* **USER**: Para especificar (por nombre o UID/GID) el usuario de trabajo para todas las órdenes RUN,CMD Y ENTRYPOINT posteriores. Ejemplos: `USER framafra` / `USER 1001:10001`.
 * **ARG**: Para definir variables para las cuales los usuarios pueden especificar valores a la hora de hacer el proceso de build mediante el flag `--build-arg`. Su sintaxis es `ARG nombre_variable` o `ARG nombre_variable=valor_por_defecto`. Posteriormente esa variable se puede usar en el resto de la órdenes de la siguiente manera `$nombre_variable`. Ejemplo: `ARG usuario=www-data`. No se puede usar con ENTRYPOINT Y CMD.
 * **ENV**: Para establecer variables de entorno dentro del contenedor. Puede ser usado posteriormente en las órdenes RUN añadiendo $ delante de el nombre de la variable de entorno. Ejemplo: `ENV WEB_DOCUMENT_ROOT=/var/www/html`. No se puede usar con ENTRYPOINT Y CMD.
 * **ENTRYPOINT**: Para establecer el ejecutable que se lanza siempre  cuando se crea el contenedor  con `docker run`, salvo que se especifique expresamente algo diferente con el flag `--entrypoint`. Su síntaxis es la siguiente: `ENTRYPOINT <command>` / `ENTRYPOINT ["executable","param1","param2"]`. Ejemplo: `ENTRYPOINT ["/usr/sbin/apache2ctl","-D","FOREGROUND"]`.
@@ -43,7 +43,7 @@ El contenido de `Dockerfile` es:
 
 ```Dockerfile
 FROM debian:buster-slim
-MAINTAINER José Domingo Muñoz "josedom24@gmail.com"
+MAINTAINER Paco Maño "fj.manofrasquet@edu.gva.es"
 RUN apt-get update  && apt-get install -y  apache2 
 COPY index.html /var/www/html/
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
@@ -52,7 +52,7 @@ CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 Para crear la imagen uso el comando `docker build`, indicando el nombre de la nueva imagen (opción `-t`) y indicando el directorio contexto.
 
 ```bash
-$ docker build -t josedom24/myapache2:v2 .
+$ docker build -t framafra/myapache2:v2 .
 ...
 ```
 > Nota: Pongo como directorio el `.` poruqe estoy ejecutando esta instrucción dentro del directorio donde está el `Dockerfile`.
@@ -63,7 +63,7 @@ Una vez terminado, podríamos ver que hemos generado una nueva imagen:
 ```bash
 $ docker images
 REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
-josedom24/myapache2       v2                  3bd28de7ae88        43 seconds ago      195MB
+framafra/myapache2       v2                  3bd28de7ae88        43 seconds ago      195MB
 ...
 ```
 
@@ -72,7 +72,7 @@ Si usamos el parámetro `--no-cache` en `docker build` haríamos la construcció
 En este caso al crear el contenedor a partir de esta imagen no hay que indicar el proceso que se va a ejecutar, porque ya se ha indicando en el fichero `Dockerfile`:
 
 ```bash
-$ docker run -d -p 8080:80 --name servidor_web josedom24/myapache2:v2 
+$ docker run -d -p 8080:80 --name servidor_web framafra/myapache2:v2 
 ```            
 
 ## Buenas prácticas al crear Dockerfile
