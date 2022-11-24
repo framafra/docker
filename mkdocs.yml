@@ -47,6 +47,8 @@ nav:
     - DockerFile:
         - El fichero DockerFile: dockerfile/file_dockerfile.md
         - Instrucciones: dockerfile/instrucciones.md
+    - Repaso:
+        - Repaso1: repaso.md
 theme:
     name: material
     include_search_page: false

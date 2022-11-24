@@ -10,14 +10,14 @@
         <meta name="author" content="Paco Mañó">
       
       
-        <link rel="canonical" href="https://github.com/framafra/docker/primeros_pasos/hello/">
+        <link rel="canonical" href="https://github.com/framafra/docker/dockerfile/file_dockerfile/">
       
       <link rel="icon" href="../../images/docker.png">
       <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
     
     
       
-        <title>Hello World de Docker - Tutorial de Docker</title>
+        <title>El fichero DockerFile - Tutorial de Docker</title>
       
     
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#el-hola-mundo-de-docker" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -115,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hello World de Docker
+              El fichero DockerFile
             
           </span>
         </div>
@@ -288,14 +283,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -318,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../instalacion/" class="md-nav__link">
+      <a href="../../primeros_pasos/instalacion/" class="md-nav__link">
         Instalación
       </a>
     </li>
@@ -332,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../usobasico/" class="md-nav__link">
+      <a href="../../primeros_pasos/usobasico/" class="md-nav__link">
         Uso Básico
       </a>
     </li>
@@ -344,21 +337,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../primeros_pasos/hello/" class="md-nav__link">
         Hello World de Docker
       </a>
-      
     </li>
   
 
@@ -847,12 +830,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       
       
@@ -873,11 +858,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../dockerfile/file_dockerfile/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         El fichero DockerFile
       </a>
+      
     </li>
   
 
@@ -889,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dockerfile/instrucciones/" class="md-nav__link">
+      <a href="../instrucciones/" class="md-nav__link">
         Instrucciones
       </a>
     </li>
@@ -966,91 +959,22 @@
                   
 
 
-<h1 id="el-hola-mundo-de-docker">El "Hola Mundo" de docker<a class="headerlink" href="#el-hola-mundo-de-docker" title="Permanent link">&para;</a></h1>
-<p>Vamos a comprobar que todo funciona creando nuestro primer contenedor desde la imagen <code>hello-world</code>:</p>
-<div class="highlight"><pre><span></span><code>$ docker run hello-world
-Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally
-latest: Pulling from library/hello-world
-0e03bdcc26d7: Pull <span class="nb">complete</span> 
-Digest:     sha256:31b9c7d48790f0d8c50ab433d9c3b7e17666d6993084c002c2ff1ca09b96391d
-Status: Downloaded newer image <span class="k">for</span> hello-world:latest
+  <h1>El fichero DockerFile</h1>
 
-Hello from Docker!
-This message shows that your installation appears to be working     correctly.
-
-To generate this message, Docker took the following steps:
- <span class="m">1</span>. The Docker client contacted the Docker daemon.
- <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
-    <span class="o">(</span>amd64<span class="o">)</span>
- <span class="m">3</span>. The Docker daemon created a new container from that image which runs    the
-    executable that produces the output you are currently reading.
- <span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which  sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
-
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-</code></pre></div>
-<p>Pero, ¿qué es lo que está sucediendo al ejecutar esa orden?:</p>
+<p>Docker nos permite generar de forma automática nuestras propias imágenes usando el comando “docker build” y los ficheros llamados <code>Dockerfile</code>.</p>
+<p>Un fichero <code>Dockerfile</code> es un <strong>conjunto de instrucciones que serán ejecutadas de forma secuencial para construir una nueva imagen docker</strong>. Cada una de estas instrucciones crea una nueva capa en la imagen que estamos creando. </p>
+<p>Los ficheros Dockerfile pueden crearse con cualquier editor de texto, pero recomendamos el editor
+multiplataforma “Visual Studio Code” https://code.visualstudio.com/.
+Al instalarlo, si detecta Docker instalado en el sistema, el propio editor nos sugerirá una serie de
+plugins que merece la pena instalarlos. En cualquier caso se pueden instalar posterioremente de forma manual, alguno de los más recomendados son: Docker y Dev Containers</p>
+<p>La estructura fundamental de un fichero <code>Dockerfile</code> suele ser la siguiente:</p>
 <ul>
-<li>Si nos fijamos en el comienzo de la información mostrada, concretamente en la
-primera fila (<em>Unable to find image 'hello-world:latest' locally</em>), ahí se nos indica que la imagen hello-word:latest no está localmente en nuestro
-sistema. Al no estar, la imagen <code>hello-word</code> se descarga desde el repositorio que se encuentra en el registro que vayamos a utilizar, en nuestro caso DockerHub. De hecho, si volvemos a hacer el comando “docker run hello-world”, al tener la imagen ya en el sistema, no nos aparecerá este texto, ya que la imagen la tenemos almacenada localmente.</li>
-<li>Otro aspecto a destacar, es que pese a que solo hemos escrito hello-world, nos ha descargado una imagen llamada hello-world:latest. Esto es porque cada imagen creada tiene un nombre de versión. Si no indicamos nada o indicamos latest, nos instala la última versión. Si queremos instalar una versión concreta de una imagen se indica de la forma imagen:nombreversion.</li>
-<li>Y  por último podemos observar que muestra el mensaje de bienvenida que es la consecuencia de ejecutar un comando al crear y arrancar un contenedor basado en esa imagen.</li>
+<li>Indicamos imagen base con la instrucción FROM</li>
+<li>Añadimos metadatos a la imágen con la instrucción LABEL</li>
+<li>Instrucciones de construcción con instrucciones como RUN, COPY, ADD, WORKDIR.</li>
+<li>Configuración: Variable de entornos, usuarios, puertos: USER, EXPOSE, ENV</li>
+<li>Instrucciones de arranque: CMD, ENTRYPOINT</li>
 </ul>
-<p>Si listamos los contenedores que se están ejecutando (<code>docker ps</code>):</p>
-<p><div class="highlight"><pre><span></span><code>$ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-</code></pre></div>
-Comprobamos que este contenedor no se está ejecutando. <strong>Un contenedor ejecuta un proceso y cuando termina la ejecución, el contenedor se para.</strong></p>
-<p>Para ver los contenedores que no se están ejecutando:</p>
-<div class="highlight"><pre><span></span><code>$ docker ps -a
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
-372ca4634d53        hello-world         <span class="s2">&quot;/hello&quot;</span>            <span class="m">8</span> minutes ago       Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">8</span> minutes ago                       elastic_johnson
-</code></pre></div>
-<p>Para eliminar el contenedor podemos identificarlo con su <code>id</code>:</p>
-<div class="highlight"><pre><span></span><code>$ docker rm 372ca4634d53
-</code></pre></div>
-<p>o con su nombre:</p>
-<p><div class="highlight"><pre><span></span><code>$ docker rm elastic_johnson
-</code></pre></div>
-<br></p>
-<div class="admonition note">
-<p class="admonition-title">Buscar imagenes</p>
-<ul>
-<li>
-<p>Para buscar las imágenes de cualquier sistema, utilizaremos la orden:</p>
-<div class="highlight"><pre><span></span><code>$docker search NombreImagen
-</code></pre></div>
-</li>
-</ul>
-<p>El script rastreará Docker Hub y nos ofrecerá una lista de todas las imágenes que tengan un nombre que concuerde con la búsqueda lanzada.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Descargar imagenes</p>
-<ul>
-<li>
-<p>Para descargar la imagen que queremos, utilizaremos la orden:</p>
-<p>$docker pull NombreImagen</p>
-</li>
-</ul>
-<p>Después de descargar una imagen, se puede ejecutar un contenedor utilizando la imagen descargada con el comando run. Si no se ha descargado la imagen previamente, automáticamente Docker primero descargará la imagen y después ejecutará un contenedor con la imagen descargada.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Ver las imagenes descargadas</p>
-<ul>
-<li>
-<p>Para ver las imágenes que tenemos descargadas, utilizaremos la orden:</p>
-<p>$docker images</p>
-</li>
-</ul>
-</div>
 
 
 
@@ -1076,7 +1000,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../usobasico/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Uso Básico" rel="prev">
+        <a href="../../redes/redes_usuario/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Redes Definidas por el Usuario" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1085,20 +1009,20 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
               <span class="md-footer__direction">
                 Previous
               </span>
-              Uso Básico
+              Redes Definidas por el Usuario
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../contenedores/dockerun/" class="md-footer__link md-footer__link--next" aria-label="Next: Crear Contenedores - Docker Run" rel="next">
+        <a href="../instrucciones/" class="md-footer__link md-footer__link--next" aria-label="Next: Instrucciones" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Crear Contenedores - Docker Run
+              Instrucciones
             </div>
           </div>
           <div class="md-footer__button md-icon">
