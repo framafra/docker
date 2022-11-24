@@ -55,8 +55,8 @@ theme:
         - toc.follow0
         - toc.integrate
         - search.suggest
-        - navigation.tabs
-        - navigation.tabs.sticky
+        #- navigation.tabs
+        #- navigation.tabs.sticky
         - navigation.top
     logo: images/docker.png
     icon:
