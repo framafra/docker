@@ -6,7 +6,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/framafra/docker/repaso/</loc>
+         <loc>https://github.com/framafra/docker/almacenamiento/asociacion_bind_mount/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/almacenamiento/asociacion_volumen/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/almacenamiento/volumenes/</loc>
          <lastmod>2022-11-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -82,6 +92,36 @@
     </url>
     <url>
          <loc>https://github.com/framafra/docker/docker/imagenvscontenedor/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/dockerfile/buenas_practicas/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/dockerfile/dockerbuild/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/dockerfile/ejemplo1/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/dockerfile/ejemplo2/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/dockerfile/ejemplo3/</loc>
+         <lastmod>2022-11-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/framafra/docker/dockerfile/ejemplo4/</loc>
          <lastmod>2022-11-24</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -12,20 +12,15 @@ Para terminar indicar que la creación de imágenes intermedias generadas por la
 
 ## Ejemplo de  Dockerfile
 
-Vamos a crear un directorio (**nuestro entorno**) donde vamos a crear un `Dockerfile` y un fichero `index.html`:
+Vamos a crear una imagen con ubuntu, al cuál le vamos a instalar apache y vamos a poner una web (index.html) con nuestro nombre.  
+Para ellos creamos un directorio en nuestro pc llamado miprimerdockerfile, en ese directorio colocaremos el fichero `index.html` y crearemos un fichero llamado Dockerfile
 
-```bash
-cd build
-~/build$ ls
-Dockerfile  index.html
-```
-
-El contenido de `Dockerfile` es:
+El contenido de `Dockerfile` será:
 
 ```Dockerfile
-FROM debian:buster-slim
+FROM ubuntu:latest
 MAINTAINER Paco Maño "fj.manofrasquet@edu.gva.es"
-RUN apt-get update  && apt-get install -y  apache2 
+RUN apt update  && apt install -y  apache2 
 COPY index.html /var/www/html/
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ```
@@ -33,41 +28,22 @@ CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 Para crear la imagen uso el comando `docker build`, indicando el nombre de la nueva imagen (opción `-t`) y indicando el directorio contexto.
 
 ```bash
-$ docker build -t framafra/myapache2:v2 .
-...
+$ docker build -t framafra/ubuntuapache:v1 .
 ```
-> Nota: Pongo como directorio el `.` poruqe estoy ejecutando esta instrucción dentro del directorio donde está el `Dockerfile`.
+!!! note "Nota: Ponemos como directorio el `.` porque estamos ejecutando esta instrucción dentro del directorio donde está el `Dockerfile`. A la imagen que voy a crear la llamos framafra/ubuntuapache y le pongo el tag de v1"
 
 
 Una vez terminado, podríamos ver que hemos generado una nueva imagen:
 
 ```bash
 $ docker images
-REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
-framafra/myapache2       v2                  3bd28de7ae88        43 seconds ago      195MB
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+framafra/ubuntuapache       v1                4816f9eee434        11 seconds ago      225MB
 ...
 ```
 
-Si usamos el parámetro `--no-cache` en `docker build` haríamos la construcción de una imagen sin usar las capas cacheadas por haber realizado anteriormente imágenes con capas similares.
-
-En este caso al crear el contenedor a partir de esta imagen no hay que indicar el proceso que se va a ejecutar, porque ya se ha indicando en el fichero `Dockerfile`:
+Ahora podemos crear el contendor a partir de la imagen creada, ejecutando el siguiente comando:
 
 ```bash
-$ docker run -d -p 8080:80 --name servidor_web framafra/myapache2:v2 
+$ docker run -d -p 8080:80 --name web_server framafra/ubuntuapache:v1 
 ```            
-
-## Buenas prácticas al crear Dockerfile
-
-* **Los contenedores deber ser "efímeros"**: Cuando decimos "efímeros" queremos decir que la creación, parada, despliegue de los contenedores creados a partir de la imagen que vamos a generar con nuestro `Dockerfile` debe tener una mínima configuración.
-* **Uso de ficheros `.dockerignore`**: Como hemos indicado anteriormente, todos los ficheros del contexto se envían al *docker engine*, es recomendable usar un directorio vacío donde vamos creando los ficheros que vamos a enviar. Además, para aumentar el rendimiento, y no enviar al daemon ficheros innecesarios podemos hacer uso de un fichero `.dockerignore`, para excluir ficheros y directorios.
-* **No instalar paquetes innecesarios**: Para reducir la complejidad, dependencias, tiempo de creación y tamaño de la imagen resultante, se debe evitar instalar paquetes extras o innecesarios. Si algún paquete no es necesario durante la creación de la imagen, lo mejor es desinstalarlo durante el proceso.
-* **Minimizar el número de capas**: Debemos encontrar el balance entre la legibilidad del Dockerfile y minimizar el número de capa que utiliza.
-* **Indicar las instrucciones a ejecutar en múltiples líneas**: Cada vez que sea posible y para hacer más fácil futuros cambios, hay que organizar los argumentos de las instrucciones que contengan múltiples líneas, esto evitará la duplicación de paquetes y hará que el archivo sea más fácil de leer. Por ejemplo:
-
-    ```bash
-    RUN apt-get update && apt-get install -y \
-    git \
-    wget \
-    apache2 \
-    php5
-    ```

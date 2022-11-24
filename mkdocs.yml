@@ -44,10 +44,20 @@ nav:
     -  Redes en Docker:
         - Redes: redes/redes.md
         - Redes Definidas por el Usuario: redes/redes_usuario.md
+    - Almacenamiento en Docker:
+        - Volúmenes docker y bind mount: almacenamiento/volumenes.md
+        - Asociando almacenamiento a los contenedores.- volúmenes Docker: almacenamiento/asociacion_volumen.md
+        - Asociando almacenamiento a los contenedores.- bind mount: almacenamiento/asociacion_bind_mount.md
     - DockerFile:
         - El fichero DockerFile: dockerfile/file_dockerfile.md
         - Instrucciones: dockerfile/instrucciones.md
         - Construyendo imágenes con docker build: dockerfile/dockerbuild.md
+        - Buenas prácticas al crear Dockerfile: dockerfile/buenas_practicas.md
+        - Ejemplos:
+            - Ejemplo 1.- Construcción de imágenes con una página estática: dockerfile/ejemplo1.md
+            - Ejemplo 2.- Construcción de imágenes con una una aplicación PHP: dockerfile/ejemplo2.md
+            - Ejemplo 3.- Construcción de imágenes con una una aplicación Python: dockerfile/ejemplo3.md
+            - Ejemplo 4.- Construcción de imágenes configurables con variables de entorno: dockerfile/ejemplo4.md
 theme:
     name: material
     include_search_page: false
