@@ -4,8 +4,8 @@ Las principales instrucciones para trabajar con imágenes son:
 
 * `docker images`: Muestra las imágenes que tenemos en el registro local.
 * `docker pull`: Nos permite descargar la última versión de la imagen indicada.
+* `docker search`: Nos permite buscar imágenes en Docker Hub.
 * `docker rmi`: Nos permite eliminar imágenes. No podemos eliminar una imágen si tenemos algún contenedor creada a partir de ella.
-* `docker search`: Busca imágenes en Docker Hub.
 * `docker inspect`: nos da información sobre la imágen indicada:
     - El id y el checksum de la imagen.
     - Los puertos abiertos.
@@ -15,6 +15,7 @@ Las principales instrucciones para trabajar con imágenes son:
     - El ENTRYPOINT que es lo que se ejecuta al hacer `docker run`.
     - Las capas.
     - Y muchas más cosas....
+* `docker history`: No permite  ver el historial de una imagen descargada, es decir, en qué versiones se basa.
 
 ## Listar imágenes locales
 Podemos obtener información de qué imágenes tenemos almacenadas localmente usando:
@@ -62,27 +63,10 @@ Si queremos eliminar imágenes descargadas que no vamos a utilizar o hemos desca
 
     $docker rmi ubuntu:20.04
 
-Una forma de eliminar todas las imágenes locales que no estén siendo utilizadas por un contenedor, es combinando ``docker images -q`` para obtener la lista y ``docker rmi`` para eliminar la lista obtenida.
+!!! Note "Eliminar todas las imágenes que no se están utilizando"
+    Una forma de eliminar todas las imágenes locales que no estén siendo utilizadas por un contenedor, es combinando ``docker images -q`` para obtener la lista y ``docker rmi`` para eliminar la lista obtenida.
 
-    $docker rmi $(docker images -q)
-
-## Eliminar contenedores con docker rm
-Hay diferentes formas de eliminar contenedores dependiendo de cómo lo queramos hacer:
-
-- Si vamos a eliminar un contenedor que está parado previamente.
-        
-    $docker rm IDENTIFICADOR/NOMBRE
-
-- Si queremos parar todos los contenedores que tenemos y borrarlos, hay que realizar dos pasos:
-  
-    – Paramos los contenedores (opcional).
-
-        $docker stop $(docker ps -a -q)
-
-    – Borramos todos los contenedores.
-
-        $docker rm $(docker ps -a -q)
-
+        $docker rmi $(docker images -q)
 
 ## Eliminar todas la imágenes y contenedores
 Una forma de realizar las operaciones anteriores de golpe, es usando ``docker system prune -a``, que elimina todas las imágenes y contenedores parados.

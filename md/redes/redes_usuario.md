@@ -52,12 +52,25 @@ $ docker network inspect red1
 ]
 ```
 
-Vamos a crear dos contenedores conectados a dicha red:
+En este caso, hemos creado una red simple con los parámetros por defecto. Algunos de los parámetros configurables más interesantes son:
+
+- “--internal”: para red interna. Restringe el acceso desde el exterior.
+- “--gateway”: para indicar la puerta de enlace de la red.
+- “--ip-range”: delimita el rango de IPs asignables al contenedor.
+- “--ipv6”: habilita el uso de IPV6.
+- “--subnet”: define la subred en formato CIDR.
+
+Para más información relacionada con el comando “docker network create” se puede consultar el siguiente enlace: [https://docs.docker.com/engine/reference/commandline/network_create/](https://docs.docker.com/engine/reference/commandline/network_create/)
+
+
+## Comprobación de la resolución de nombres entre contendedores
+
+Creamos un contenedor y lo conectamos a la red que acabamos de crear:
 
 ```bash
 $ docker run -d --name my-apache-app --network red1 -p 8080:80 httpd:2.4
 ```
-Lo primero que vamos a comprobar es la resolución DNS:
+Creamos otro contenedor y comprobamos la resolución DNS:
 
 ```bash
 $ docker run -it --name contenedor1 --network red1 debian bash
@@ -99,7 +112,7 @@ Podemos conectar "en caliente" un contenedor a una nueva red con:
 ```
 docker network connect <red> <contenedor>
 ```
-Para desconectarla de una red podemos usar: `docker network disconnect`.
+Para desconectarla de una red podemos usar: `docker network disconnect <red> <contenedor>`.
 
 Tanto al crear un contenedor con el flag `--network`, como con la instrucción `docker network connect`, podemos usar algunos otros flags:
 

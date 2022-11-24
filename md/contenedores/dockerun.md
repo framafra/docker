@@ -7,19 +7,22 @@ Es posiblemente el comando más utilizado. Podríamos decir que este comando cre
 
 La sintaxis sería la siguiente:
 
-    $docker run -opciones --name NombreContenedor
+    $docker run -opciones NombreImagenContenedor [Comando al arrancar] [Argumentos] 
 
 Esta opción crea el contenedor con las características dadas en opciones, que pueden ser:
 
-- -i Mantiene una conexión interactiva con el “standard input”.
-- -t Gestiona un “pseudo TTY”.
+- -name Asigna un nombre al contenedor.
+- -i Indica que el proceso lanzado en el contenedor docker estará en modo
+interactivo, es decir, enlaza la entrada estándar cuando se asigna un proceso a una
+terminal.
+- -t Asigna al proceso lanzado al arrancar el contenedor una pseudo terminal,
+facilitando el acceso al mismo desde nuestra terminal..
 - -d Ejecuta el contenedor en modo “background” y nos muestra el ID.
 - -a Asocia “standard input” o “output” a la sesión abierta.
 - -cpus decimal – Número de CPUs asignadas.
 - -IP asigna una IP.
 - -mac-address string – Asigna una MAC address especial al contenedor.
 - -mv Fija un límite de memoria per este contenedor.
-- -name Asigna un nombre al contenedor.
 - -p Publica los puertos del contenedor en la red asignada.
 - -rm Al parar el contenedor, se eliminará automáticamente.
 - -tmpfs Monta un directorio en modo tmpfs (temporal, no tiene persistencia).

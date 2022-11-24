@@ -90,9 +90,7 @@
     
       
 
-  
-
-<header class="md-header md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Tutorial de Docker" class="md-header__button md-logo" aria-label="Tutorial de Docker" data-md-component="logo">
       
@@ -171,104 +169,13 @@
     
   </nav>
   
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../docker/docker/" class="md-tabs__link">
-        Docker
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../primeros_pasos/instalacion/" class="md-tabs__link">
-        Primeros paso
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
-        Contenedores
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../imagenes/registro/" class="md-tabs__link">
-        Imágenes
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../redes/redes/" class="md-tabs__link">
-        Redes en Docker
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -281,12 +188,10 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Tutorial de Docker" class="md-nav__button md-logo" aria-label="Tutorial de Docker" data-md-component="logo">
       
@@ -534,6 +439,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../inspect/" class="md-nav__link">
+        Inspeccionar Contenedores
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejecutar_comando/" class="md-nav__link">
+        Ejecutar comandos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../copiar/" class="md-nav__link">
         Copiar ficheros entre anfitrión y contenedores
       </a>
@@ -561,22 +494,36 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../eliminar/" class="md-nav__link">
+        Eliminar contenedores
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" type="checkbox" id="__nav_3_9" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_6">
+        <label class="md-nav__link" for="__nav_3_9">
           Ejemplos
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Ejemplos" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_6">
+        <label class="md-nav__title" for="__nav_3_9">
           <span class="md-nav__icon md-icon"></span>
           Ejemplos
         </label>
@@ -741,8 +688,50 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/creacion/" class="md-nav__link">
-        Creación de contenedores desde Imágenes
+      <a href="../../imagenes/creacion_contenedores/" class="md-nav__link">
+        Creación de contenedores desde imágenes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../imagenes/creacion_imagenes/" class="md-nav__link">
+        Creación de imágenes desde contenedores
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../imagenes/subir_imagen_dockerhub/" class="md-nav__link">
+        Subir imágenes a Docker Hub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../imagenes/exportar_importar/" class="md-nav__link">
+        Exportar/Importar imágenes locales
       </a>
     </li>
   
@@ -855,19 +844,22 @@
 </p>
 </div>
 <p>La sintaxis sería la siguiente:</p>
-<div class="highlight"><pre><span></span><code>$docker run -opciones --name NombreContenedor
+<div class="highlight"><pre><span></span><code>$docker run -opciones NombreImagenContenedor [Comando al arrancar] [Argumentos]
 </code></pre></div>
 <p>Esta opción crea el contenedor con las características dadas en opciones, que pueden ser:</p>
 <ul>
-<li>-i Mantiene una conexión interactiva con el “standard input”.</li>
-<li>-t Gestiona un “pseudo TTY”.</li>
+<li>-name Asigna un nombre al contenedor.</li>
+<li>-i Indica que el proceso lanzado en el contenedor docker estará en modo
+interactivo, es decir, enlaza la entrada estándar cuando se asigna un proceso a una
+terminal.</li>
+<li>-t Asigna al proceso lanzado al arrancar el contenedor una pseudo terminal,
+facilitando el acceso al mismo desde nuestra terminal..</li>
 <li>-d Ejecuta el contenedor en modo “background” y nos muestra el ID.</li>
 <li>-a Asocia “standard input” o “output” a la sesión abierta.</li>
 <li>-cpus decimal – Número de CPUs asignadas.</li>
 <li>-IP asigna una IP.</li>
 <li>-mac-address string – Asigna una MAC address especial al contenedor.</li>
 <li>-mv Fija un límite de memoria per este contenedor.</li>
-<li>-name Asigna un nombre al contenedor.</li>
 <li>-p Publica los puertos del contenedor en la red asignada.</li>
 <li>-rm Al parar el contenedor, se eliminará automáticamente.</li>
 <li>-tmpfs Monta un directorio en modo tmpfs (temporal, no tiene persistencia).</li>
@@ -879,6 +871,11 @@
 <p>Vamos arrancar un contenedor utilizando la imagen de Ubuntu 18.04, en modo interactivo, con nombre “ubu18”, al mismo tiempo se nos abrirá un terminal de bash para interactuar. Para ello ejecutaremos:</p>
 <div class="highlight"><pre><span></span><code>    docker run --name ubu18 -it ubuntu:18.04 /bin/bash
 </code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Crear contenedores sin arrancarlos: docker run vs docker create</p>
+<p>El comando “docker run” crea y arranca un contenedor.
+Si queremos crear un contenedor sin arrancarlo debemos utilizar el comando “docker create”. La descripción completa del comando “docker create” la podéis encontrar en <a href="https://docs.docker.com/engine/reference/commandline/create/">https://docs.docker.com/engine/reference/commandline/create/</a></p>
 </div>
 
 
@@ -963,7 +960,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow0", "toc.integrate", "search.suggest", "navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow0", "toc.integrate", "search.suggest", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>

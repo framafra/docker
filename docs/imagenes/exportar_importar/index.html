@@ -10,14 +10,14 @@
         <meta name="author" content="Paco Mañó">
       
       
-        <link rel="canonical" href="https://github.com/framafra/docker/contenedores/listar/">
+        <link rel="canonical" href="https://github.com/framafra/docker/imagenes/exportar_importar/">
       
       <link rel="icon" href="../../images/docker.png">
       <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
-        <title>Listar Contenedores - Tutorial de Docker</title>
+        <title>Exportar/Importar imágenes locales - Tutorial de Docker</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Listar Contenedores
+              Exportar/Importar imágenes locales
             
           </span>
         </div>
@@ -359,14 +359,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -389,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dockerun/" class="md-nav__link">
+      <a href="../../contenedores/dockerun/" class="md-nav__link">
         Crear Contenedores - Docker Run
       </a>
     </li>
@@ -403,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrancar_parar/" class="md-nav__link">
+      <a href="../../contenedores/arrancar_parar/" class="md-nav__link">
         Arrancar/Parar Contenedores
       </a>
     </li>
@@ -415,19 +413,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contenedores/listar/" class="md-nav__link">
         Listar Contenedores
       </a>
-      
     </li>
   
 
@@ -439,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspect/" class="md-nav__link">
+      <a href="../../contenedores/inspect/" class="md-nav__link">
         Inspeccionar Contenedores
       </a>
     </li>
@@ -453,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ejecutar_comando/" class="md-nav__link">
+      <a href="../../contenedores/ejecutar_comando/" class="md-nav__link">
         Ejecutar comandos
       </a>
     </li>
@@ -467,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copiar/" class="md-nav__link">
+      <a href="../../contenedores/copiar/" class="md-nav__link">
         Copiar ficheros entre anfitrión y contenedores
       </a>
     </li>
@@ -481,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../renombrar/" class="md-nav__link">
+      <a href="../../contenedores/renombrar/" class="md-nav__link">
         Renombrar Contenedores
       </a>
     </li>
@@ -495,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eliminar/" class="md-nav__link">
+      <a href="../../contenedores/eliminar/" class="md-nav__link">
         Eliminar contenedores
       </a>
     </li>
@@ -535,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ejemplos/simple/" class="md-nav__link">
+      <a href="../../contenedores/ejemplos/simple/" class="md-nav__link">
         Ejecución de un contenedor simple
       </a>
     </li>
@@ -549,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ejemplos/interactivo/" class="md-nav__link">
+      <a href="../../contenedores/ejemplos/interactivo/" class="md-nav__link">
         Ejecución de un contenedor interactivo
       </a>
     </li>
@@ -563,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ejemplos/demonio/" class="md-nav__link">
+      <a href="../../contenedores/ejemplos/demonio/" class="md-nav__link">
         Creando un contenedor demonio
       </a>
     </li>
@@ -577,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ejemplos/web/" class="md-nav__link">
+      <a href="../../contenedores/ejemplos/web/" class="md-nav__link">
         Creando un contenedor con un servidor web
       </a>
     </li>
@@ -591,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ejemplos/variables/" class="md-nav__link">
+      <a href="../../contenedores/ejemplos/variables/" class="md-nav__link">
         Configuración de contenedores con variables de entorno
       </a>
     </li>
@@ -618,12 +608,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -646,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/registro/" class="md-nav__link">
+      <a href="../registro/" class="md-nav__link">
         Registro de Imágenes.- DockerHub
       </a>
     </li>
@@ -660,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/gestion/" class="md-nav__link">
+      <a href="../gestion/" class="md-nav__link">
         Gestión de Imágenes
       </a>
     </li>
@@ -674,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/organizacion/" class="md-nav__link">
+      <a href="../organizacion/" class="md-nav__link">
         ¿Cómo se organizan las imágenes?
       </a>
     </li>
@@ -688,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/creacion_contenedores/" class="md-nav__link">
+      <a href="../creacion_contenedores/" class="md-nav__link">
         Creación de contenedores desde imágenes
       </a>
     </li>
@@ -702,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/creacion_imagenes/" class="md-nav__link">
+      <a href="../creacion_imagenes/" class="md-nav__link">
         Creación de imágenes desde contenedores
       </a>
     </li>
@@ -716,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/subir_imagen_dockerhub/" class="md-nav__link">
+      <a href="../subir_imagen_dockerhub/" class="md-nav__link">
         Subir imágenes a Docker Hub
       </a>
     </li>
@@ -728,11 +720,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../imagenes/exportar_importar/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Exportar/Importar imágenes locales
       </a>
+      
     </li>
   
 
@@ -744,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imagenes/mediawiki/" class="md-nav__link">
+      <a href="../mediawiki/" class="md-nav__link">
         Ejemplo.- Desplegando la aplicación mediawiki
       </a>
     </li>
@@ -835,30 +835,27 @@
                   
 
 
-  <h1>Listar Contenedores</h1>
+  <h1>Exportar/Importar imágenes locales</h1>
 
-<p>Mediante el comando <code>docker ps</code> podemos listar los contenedores en el sistema,tanto parados como en ejecución.</p>
-<p>Si ejecutamos solo <code>docker ps</code> nos indica los que están en ejecución</p>
-<div class="highlight"><pre><span></span><code>$ docker ps
-CONTAINER ID   IMAGE   COMMAND              CREATED             STATUS              PORTS                                   NAMES
-02e86fdf39bd   httpd   <span class="s2">&quot;httpd-foreground&quot;</span>   About a minute ago  Up About a minute   <span class="m">0</span>.0.0.0:8080-&gt;80/tcp, :::8080-&gt;80/tcp   my-apache-app
+<h2 id="exportar">Exportar<a class="headerlink" href="#exportar" title="Permanent link">&para;</a></h2>
+<p>Si tenemos una imagen local en nuestro sistema, podemos hacer una copia de la misma, ya sea como copia de seguridad o como forma de transportarla a otros sistemas mediante el comando “docker save”.</p>
+<p>Por ejemplo se puede hacer de estas dos formas:</p>
+<div class="highlight"><pre><span></span><code>docker save -o copiaSeguridad.tar paco/ubuntumod
 </code></pre></div>
-<p>Mientras si ejecutamos lo siguiente:</p>
-<div class="highlight"><pre><span></span><code>$ docker ps -a
-CONTAINER ID   IMAGE     COMMAND                CREATED         STATUS                     PORTS                                   NAMES
-02e86fdf39bd   httpd     <span class="s2">&quot;httpd-foreground&quot;</span>     <span class="m">8</span> minutes ago   Up <span class="m">8</span> minutes               <span class="m">0</span>.0.0.0:8080-&gt;80/tcp, :::8080-&gt;80/tcp   my-apache-app
-db20a19fbd04   ubuntu    <span class="s2">&quot;bash&quot;</span>                 <span class="m">9</span> minutes ago   Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">9</span> minutes ago                                           contenedor1
-0f7c3e9e6690   ubuntu    <span class="s2">&quot;echo &#39;Hello world&#39;&quot;</span>   <span class="m">9</span> minutes ago   Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">9</span> minutes ago                                           lucid_goldwasser
+<p>o de forma alternativa</p>
+<div class="highlight"><pre><span></span><code>docker save &gt; paco/ubuntumod copiaSeguridad.tar
 </code></pre></div>
-<p>La información que obtenemos de los contenedores es la siguiente:</p>
+<h2 id="importar">Importar<a class="headerlink" href="#importar" title="Permanent link">&para;</a></h2>
+<p>Si queremos importar el fichero para crear una imagen en nuestra máquina, podemos usar <code>docker import</code>. Por ejemplo se puede hacer de estas dos formas:</p>
+<div class="highlight"><pre><span></span><code>docker load -i copiaSeguridad.tar
+</code></pre></div>
+<p>o de forma alternativa</p>
+<div class="highlight"><pre><span></span><code>docker load &lt; copiaSeguridad.tar
+</code></pre></div>
+<p>Más información sobre los comandos:</p>
 <ul>
-<li>CONTAINER_ID : identificador único del contenedor.</li>
-<li>IMAGE : imagen utilizada para crear el contenedor.</li>
-<li>COMMAND : comando que se lanza al arrancar el contenedor.</li>
-<li>CREATED : cuando se creó el contenedor.</li>
-<li>STATUS : si el contenedor está en marcha o no (indicando cuánto lleva en marcha o cuánto hace que se paró).</li>
-<li>PORTS : redirección de puertos del contenedor.</li>
-<li>NAMES : nombre del contenedor. Se puede generar como parámetro al crear el contenedor, o si no se indica nada, el propio Docker genera un nombre aleatorio.</li>
+<li>Docker save: <a href="https://docs.docker.com/engine/reference/commandline/save/">https://docs.docker.com/engine/reference/commandline/save/</a></li>
+<li>Docker load: <a href="https://docs.docker.com/engine/reference/commandline/load/">https://docs.docker.com/engine/reference/commandline/load/</a></li>
 </ul>
 
 
@@ -885,7 +882,7 @@ db20a19fbd04   ubuntu    <span class="s2">&quot;bash&quot;</span>               
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../arrancar_parar/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Arrancar/Parar Contenedores" rel="prev">
+        <a href="../subir_imagen_dockerhub/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Subir imágenes a Docker Hub" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -894,20 +891,20 @@ db20a19fbd04   ubuntu    <span class="s2">&quot;bash&quot;</span>               
               <span class="md-footer__direction">
                 Previous
               </span>
-              Arrancar/Parar Contenedores
+              Subir imágenes a Docker Hub
             </div>
           </div>
         </a>
       
       
         
-        <a href="../inspect/" class="md-footer__link md-footer__link--next" aria-label="Next: Inspeccionar Contenedores" rel="next">
+        <a href="../mediawiki/" class="md-footer__link md-footer__link--next" aria-label="Next: Ejemplo.- Desplegando la aplicación mediawiki" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Inspeccionar Contenedores
+              Ejemplo.- Desplegando la aplicación mediawiki
             </div>
           </div>
           <div class="md-footer__button md-icon">
