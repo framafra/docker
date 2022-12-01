@@ -1,16 +1,26 @@
-Para crear y montar volúmenes a un contenedor se utiliza el flag `--volume` o `-v`.
+## Volúmenes docker
 
-!!! Note "Si usamos imágenes de DockerHub, debemos leer la información que cada imagen nos proporciona en su página ya que esa información suele indicar cómo persistir los datos de esa imagen, ya sea con volúmenes o bind mounts, y cuáles son las carpetas importantes en caso de ser imágenes que contengan ciertos servicios (web, base de datos etc...)"
+Si elegimos conseguir la persistencia de datos usando volúmenes estamos haciendo que los datos de los contenedores que nosotros decidamos se almacenen en una parte del sistema de ficheros que es gestionada por docker y a la que, debido a sus permisos, sólo docker tendrá acceso. En linux se guardan en `/var/lib/docker/volumes`. Este tipo de volúmenes se suele usar en los siguiente casos:
 
-## Gestión de volúmnes
-Los volúmenes se pueden crear sin necesidad de asociarlo a un contenenos. Esto lo podemos hacer con el comando `docker volume`:
+* Para compartir datos entre contenedores. Simplemente tendrán que usar el mismo volumen.
+* Para copias de seguridad ya sea para que sean usadas posteriormente por otros contenedores o para mover esos volúmenes a otros hosts.
+* Cuando quiero almacenar los datos de mi contenedor no localmente si no en un proveedor cloud.
 
-- Con `docker volume create mivolumen` podemos crear el volumen vacío.
-- Con `docker volume ls` podemos observar los volúmenes existentes.
-- Con `docker volume rm mivolumen` puedes borrar un volumen, siempre que todo contenedor que lo utilice esté parado.
+### Gestionando volúmenes
+
+Los volúmenes se pueden crear sin necesidad de asociarlo a un contenenos. Esto lo podemos hacer con el comando `docker volume`.  
+Algunos comando útiles para trabajar con volúmenes docker:
+
+* `docker volumen create mivolumen`: Crea un volumen con el nombre "mivolumnen" vacío.
+* `docker volume rm mivolumen`: Elimina el volumen "mivolumen", siempre que todo contenedor que lo utilice esté parado.
+* `docker volumen prune`: Para eliminar los volúmenes que no están siendo usados por ningún contenedor.
+* `docker volume ls`: Nos proporciona una lista de los volúmenes creados y algo de información adicional.
+* `docker volume inspect`: Nos dará una información mucho más detallada de el volumen que hayamos elegido.
+
 
 Una vez creado el volumen lo podemos asociar a cualquier contenedor con el flag `--volume` o `-v`.
 
+!!! Note "Si usamos imágenes de DockerHub, debemos leer la información que cada imagen nos proporciona en su página ya que esa información suele indicar cómo persistir los datos de esa imagen, ya sea con volúmenes o bind mounts, y cuáles son las carpetas importantes en caso de ser imágenes que contengan ciertos servicios (web, base de datos etc...)"
 
 ## Ejemplo usando volúmenes docker
 
@@ -56,3 +66,5 @@ Algunas aclaraciones:
 * Al usar tanto volúmenes como bind mount, el contenido de lo que tenemos sobreescribirá la carpeta destino en el sistema de ficheros del contenedor en caso de que exista.
 
 
+
+Para más información sobre volumenes puedes consultar [https://docs.docker.com/storage/volumes/](https://docs.docker.com/storage/volumes/)

@@ -17,7 +17,7 @@
     
     
       
-        <title>Asociando almacenamiento a los contenedores.- volúmenes Docker - Tutorial de Docker</title>
+        <title>Volúmenes - Tutorial de Docker</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Asociando almacenamiento a los contenedores.- volúmenes Docker
+              Volúmenes
             
           </span>
         </div>
@@ -861,7 +861,7 @@
   
     <li class="md-nav__item">
       <a href="../volumenes/" class="md-nav__link">
-        Volúmenes docker y bind mount
+        Tipos de almacenamiento
       </a>
     </li>
   
@@ -882,7 +882,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Asociando almacenamiento a los contenedores.- volúmenes Docker
+        Volúmenes
       </a>
       
     </li>
@@ -897,7 +897,7 @@
   
     <li class="md-nav__item">
       <a href="../asociacion_bind_mount/" class="md-nav__link">
-        Asociando almacenamiento a los contenedores.- bind mount
+        Bind Mount
       </a>
     </li>
   
@@ -1104,41 +1104,57 @@
                   
 
 
-  <h1>Asociando almacenamiento a los contenedores.- volúmenes Docker</h1>
+  <h1>Volúmenes</h1>
 
-<p>Veamos como puedo usar los volúmenes y los bind mounts en los contenedores. Aunque dos formas de asociar el almacenamiento al contenedor nosotros vamos a usar el flag <code>--volume</code> o <code>-v</code>.</p>
-<p>Si usamos imágenes de DockerHub, debemos leer la información que cada imagen nos proporciona en su página ya que esa información suele indicar cómo persistir los datos de esa imagen, ya sea con volúmenes o bind mounts, y cuáles son las carpetas importantes en caso de ser imágenes que contengan ciertos servicios (web, base de datos etc...)</p>
+<h2 id="volumenes-docker">Volúmenes docker<a class="headerlink" href="#volumenes-docker" title="Permanent link">&para;</a></h2>
+<p>Si elegimos conseguir la persistencia de datos usando volúmenes estamos haciendo que los datos de los contenedores que nosotros decidamos se almacenen en una parte del sistema de ficheros que es gestionada por docker y a la que, debido a sus permisos, sólo docker tendrá acceso. En linux se guardan en <code>/var/lib/docker/volumes</code>. Este tipo de volúmenes se suele usar en los siguiente casos:</p>
+<ul>
+<li>Para compartir datos entre contenedores. Simplemente tendrán que usar el mismo volumen.</li>
+<li>Para copias de seguridad ya sea para que sean usadas posteriormente por otros contenedores o para mover esos volúmenes a otros hosts.</li>
+<li>Cuando quiero almacenar los datos de mi contenedor no localmente si no en un proveedor cloud.</li>
+</ul>
+<h3 id="gestionando-volumenes">Gestionando volúmenes<a class="headerlink" href="#gestionando-volumenes" title="Permanent link">&para;</a></h3>
+<p>Los volúmenes se pueden crear sin necesidad de asociarlo a un contenenos. Esto lo podemos hacer con el comando <code>docker volume</code>.<br />
+Algunos comando útiles para trabajar con volúmenes docker:</p>
+<ul>
+<li><code>docker volumen create mivolumen</code>: Crea un volumen con el nombre "mivolumnen" vacío.</li>
+<li><code>docker volume rm mivolumen</code>: Elimina el volumen "mivolumen", siempre que todo contenedor que lo utilice esté parado.</li>
+<li><code>docker volumen prune</code>: Para eliminar los volúmenes que no están siendo usados por ningún contenedor.</li>
+<li><code>docker volume ls</code>: Nos proporciona una lista de los volúmenes creados y algo de información adicional.</li>
+<li><code>docker volume inspect</code>: Nos dará una información mucho más detallada de el volumen que hayamos elegido.</li>
+</ul>
+<p>Una vez creado el volumen lo podemos asociar a cualquier contenedor con el flag <code>--volume</code> o <code>-v</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Si usamos imágenes de DockerHub, debemos leer la información que cada imagen nos proporciona en su página ya que esa información suele indicar cómo persistir los datos de esa imagen, ya sea con volúmenes o bind mounts, y cuáles son las carpetas importantes en caso de ser imágenes que contengan ciertos servicios (web, base de datos etc...)</p>
+</div>
 <h2 id="ejemplo-usando-volumenes-docker">Ejemplo usando volúmenes docker<a class="headerlink" href="#ejemplo-usando-volumenes-docker" title="Permanent link">&para;</a></h2>
 <p>Lo primero que vamos a hacer es crear un volumen docker:</p>
-<div class="highlight"><pre><span></span><code>$ docker volume create miweb
-miweb
+<div class="highlight"><pre><span></span><code>$ docker volume create mivol
+mivol
 </code></pre></div>
 <p>A continuación creamos un contenedor con el volumen asociado, usando <code>--mount</code>, y creamos un fichero <code>index.html</code>:</p>
-<div class="highlight"><pre><span></span><code>$ docker run -d --name my-apache-app -v miweb:/usr/local/apache2/htdocs -p <span class="m">8080</span>:80 httpd:2.4
+<div class="highlight"><pre><span></span><code>$ docker run -d --name apa -v mivol:/usr/local/apache2/htdocs -p <span class="m">81</span>:80 httpd:2.4
 b51f89eb21701362279489c5b52a06b1a44c10194c00291de895b404ab347b80
 
-$ docker <span class="nb">exec</span> my-apache-app bash -c <span class="s1">&#39;echo &quot;&lt;h1&gt;Hola&lt;/h1&gt;&quot; &gt; /usr/local/apache2/htdocs/index.html&#39;</span>
-
-$ curl http://localhost:8080
-&lt;h1&gt;Hola&lt;/h1&gt;
-
-$ docker rm -f my-apache-app 
-my-apache-app
+$ docker <span class="nb">exec</span> apa bash -c <span class="s1">&#39;echo &quot;&lt;h1&gt;Volumen de prueba&lt;/h1&gt;&quot; &gt; /usr/local/apache2/htdocs/index.html&#39;</span>
+</code></pre></div>
+<p>Accedemos a un navegador y probamos la web http://localhost:81</p>
+<p>Borramos el contenedor.</p>
+<div class="highlight"><pre><span></span><code>$ docker rm -f apa
+apa
 </code></pre></div>
 <p>Después de borrar el contenedor, volvemos a crear otro contenedor con el mismo volumen asociado:</p>
-<div class="highlight"><pre><span></span><code>$ docker run -d --name my-apache-app -v miweb:/usr/local/apache2/htdocs -p <span class="m">8080</span>:80 httpd:2.4
+<div class="highlight"><pre><span></span><code>$ docker run -d --name apa1 -v mivol:/usr/local/apache2/htdocs -p <span class="m">82</span>:80 httpd:2.4
 baa3511ca2227e30d90fa2b4b225e209889be4badff583ce58ac1feaa73d5d77
 </code></pre></div>
-<p>Y podemos comprobar que no no se ha perdido la información (el fichero <code>index.html</code>):</p>
-<div class="highlight"><pre><span></span><code>$ curl http://localhost:8080
-&lt;h1&gt;Hola&lt;/h1&gt;
-</code></pre></div>
+<p>Y podemos comprobar en un navegador web http://localhost:82 que no se ha perdido la información (el fichero <code>index.html</code>):</p>
 <p>Algunas aclaraciones:</p>
 <ul>
 <li>Al no indicar el volumen, se creará un nuevo volumen.</li>
 <li>Si usamos el flag <code>-v</code> e indicamos un nombre, se creará un volumen docker nuevo.</li>
 <li>Al usar tanto volúmenes como bind mount, el contenido de lo que tenemos sobreescribirá la carpeta destino en el sistema de ficheros del contenedor en caso de que exista.</li>
 </ul>
+<p>Para más información sobre volumenes puedes consultar <a href="https://docs.docker.com/storage/volumes/">https://docs.docker.com/storage/volumes/</a></p>
 
 
 
@@ -1164,7 +1180,7 @@ baa3511ca2227e30d90fa2b4b225e209889be4badff583ce58ac1feaa73d5d77
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../volumenes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Volúmenes docker y bind mount" rel="prev">
+        <a href="../volumenes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tipos de almacenamiento" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1173,20 +1189,20 @@ baa3511ca2227e30d90fa2b4b225e209889be4badff583ce58ac1feaa73d5d77
               <span class="md-footer__direction">
                 Previous
               </span>
-              Volúmenes docker y bind mount
+              Tipos de almacenamiento
             </div>
           </div>
         </a>
       
       
         
-        <a href="../asociacion_bind_mount/" class="md-footer__link md-footer__link--next" aria-label="Next: Asociando almacenamiento a los contenedores.- bind mount" rel="next">
+        <a href="../asociacion_bind_mount/" class="md-footer__link md-footer__link--next" aria-label="Next: Bind Mount" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Asociando almacenamiento a los contenedores.- bind mount
+              Bind Mount
             </div>
           </div>
           <div class="md-footer__button md-icon">

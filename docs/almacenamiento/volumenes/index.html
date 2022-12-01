@@ -17,7 +17,7 @@
     
     
       
-        <title>Volúmenes docker y bind mount - Tutorial de Docker</title>
+        <title>Tipos de almacenamiento - Tutorial de Docker</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Volúmenes docker y bind mount
+              Tipos de almacenamiento
             
           </span>
         </div>
@@ -868,7 +868,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Volúmenes docker y bind mount
+        Tipos de almacenamiento
       </a>
       
     </li>
@@ -883,7 +883,7 @@
   
     <li class="md-nav__item">
       <a href="../asociacion_volumen/" class="md-nav__link">
-        Asociando almacenamiento a los contenedores.- volúmenes Docker
+        Volúmenes
       </a>
     </li>
   
@@ -897,7 +897,7 @@
   
     <li class="md-nav__item">
       <a href="../asociacion_bind_mount/" class="md-nav__link">
-        Asociando almacenamiento a los contenedores.- bind mount
+        Bind Mount
       </a>
     </li>
   
@@ -1104,10 +1104,11 @@
                   
 
 
-  <h1>Volúmenes docker y bind mount</h1>
+  <h1>Tipos de almacenamiento</h1>
 
 <h2 id="los-contenedores-son-efimeros">Los contenedores son efímeros<a class="headerlink" href="#los-contenedores-son-efimeros" title="Permanent link">&para;</a></h2>
-<p><strong>Los contenedores son efímeros</strong>, es decir, los ficheros, datos y configuraciones que creamos en los contenedores sobreviven a las paradas de los mismos pero, sin embargo, son destruidos si el contenedor es destruido. </p>
+<p>Por defecto, todos los archivos que se crean dentro de un contenedor se almacenan en la última capa del sistema de archivos (la capa de lectura/escritura), esto quiere decir que los datos que tenemos en esta capa se perderán cuando el contenedor se elimine y no podremos compartirlos con otros contenedores.<br />
+Es decir, <strong>los contenedores son efímeros</strong>, puesto que, los ficheros, datos y configuraciones que creamos en los contenedores sobreviven a las paradas de los mismos pero, sin embargo, son destruidos si el contenedor es destruido. </p>
 <h2 id="los-datos-en-los-contenedores">Los datos en los contenedores<a class="headerlink" href="#los-datos-en-los-contenedores" title="Permanent link">&para;</a></h2>
 <p><img alt="docker" src="../../images/types-of-mounts.png" /></p>
 <p>Ante la situación anteriormente descrita Docker nos proporciona varias soluciones para persistir los datos de los contenedores:</p>
@@ -1115,28 +1116,6 @@
 <li>Los <strong>volúmenes docker</strong>.</li>
 <li>Los <strong>bind mount</strong></li>
 <li>Los <strong>tmpfs mounts</strong>: Almacenan en memoria la información. (No lo vamos a ver)</li>
-</ul>
-<h2 id="volumenes-docker">Volúmenes docker<a class="headerlink" href="#volumenes-docker" title="Permanent link">&para;</a></h2>
-<p>Si elegimos conseguir la persistencia usando volúmenes estamos haciendo que los datos de los contenedores que nosotros decidamos se almacenen en una parte del sistema de ficheros que es gestionada por docker y a la que, debido a sus permisos, sólo docker tendrá acceso. En linux se guardan en <code>/var/lib/docker/volumes</code>. Este tipo de volúmenes se suele usar en los siguiente casos:</p>
-<ul>
-<li>Para compartir datos entre contenedores. Simplemente tendrán que usar el mismo volumen.</li>
-<li>Para copias de seguridad ya sea para que sean usadas posteriormente por otros contenedores o para mover esos volúmenes a otros hosts.</li>
-<li>Cuando quiero almacenar los datos de mi contenedor no localmente si no en un proveedor cloud.</li>
-</ul>
-<h3 id="gestionando-volumenes">Gestionando volúmenes<a class="headerlink" href="#gestionando-volumenes" title="Permanent link">&para;</a></h3>
-<p>Algunos comando útiles para trabajar con volúmenes docker:</p>
-<ul>
-<li><strong>docker volumen create</strong>: Crea un volumen con el nombre indicado.</li>
-<li><strong>docker volume rm</strong>: Elimina el volumen indicado.</li>
-<li><strong>docker volumen prune</strong>: Para eliminar los volúmenes que no están siendo usados por ningún contenedor.</li>
-<li><strong>docker volume ls</strong>: Nos proporciona una lista de los volúmenes creados y algo de información adicional.</li>
-<li><strong>docker volume inspect</strong>: Nos dará una información mucho más detallada de el volumen que hayamos elegido.</li>
-</ul>
-<h2 id="bind-mounts">Bind mounts<a class="headerlink" href="#bind-mounts" title="Permanent link">&para;</a></h2>
-<p>Si elegimos conseguir la persistencia de los datos de los contenedores usando bind mount lo que estamos haciendo es "mapear" (montar) una parte de mi sistema de ficheros, de la que yo normalmente tengo el control, con una parte del sistema de ficheros del contenedor. Por lo tanto podemos montar tanto <strong>directorios</strong> como <strong>ficheros</strong>. De esta manera conseguimos:</p>
-<ul>
-<li>Compartir ficheros entre el host y los containers.</li>
-<li>Que otras aplicaciones que no sean docker tengan acceso a esos ficheros, ya sean código, ficheros etc...</li>
 </ul>
 
 
@@ -1179,13 +1158,13 @@
       
       
         
-        <a href="../asociacion_volumen/" class="md-footer__link md-footer__link--next" aria-label="Next: Asociando almacenamiento a los contenedores.- volúmenes Docker" rel="next">
+        <a href="../asociacion_volumen/" class="md-footer__link md-footer__link--next" aria-label="Next: Volúmenes" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Asociando almacenamiento a los contenedores.- volúmenes Docker
+              Volúmenes
             </div>
           </div>
           <div class="md-footer__button md-icon">

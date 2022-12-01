@@ -1,6 +1,14 @@
-“Binding mount”: básicamente este tipo de persistencia consiste en “montar” un fichero o directorio de la máquina anfitrión en un fichero o directorio del contenedor.  
-Este montaje se hace en el momento de crear el contenedor.
-- El fichero o directorio se indica en ambos casos con una ruta absoluta no tiene porque existir en el contenedor (si no existe, se creará) .
+## Bind mounts
+Si elegimos conseguir la persistencia de los datos de los contenedores usando bind mount lo que estamos haciendo es "mapear" (montar) una parte de mi sistema de ficheros, de la que yo normalmente tengo el control, con una parte del sistema de ficheros del contenedor. Es decir, tipo de persistencia consiste en “montar” un fichero o directorio de la máquina anfitrión en un fichero o directorio del contenedor.  
+Este montaje se hace en el momento de crear el contenedor mediante dos parámetros distintos: “-v” que es más simple y “--mount” que es más explícito.  
+Con esto conseguimos:
+
+* Compartir ficheros entre el host y los containers.
+* Que otras aplicaciones que no sean docker tengan acceso a esos ficheros, ya sean código, ficheros etc...
+
+Cosas a tener en cuenta:
+
+- El **fichero o directorio se indica en ambos casos con una ruta absoluta** no tiene porque existir en el contenedor (si no existe, se creará).
 - El rendimiento de este tipo de persistencia, a efectos prácticos, depende del sistema de ficheros y características hardware de la máquina real. Una buena configuración según las necesidades del contenedor influirá en el rendimiento.
 - Estos volúmenes pueden ser usados por varios contenedores simultáneamente.
 - En sistemas Linux no suele haber diferencias de rendimiento respecto a volúmenes, pero en sistemas Windows y Mac el rendimiento es peor.
@@ -53,3 +61,5 @@ $ curl http://localhost:8080
 
 Por último, indicar que si nuestra carpeta origen no existe y hacemos un bind mount con `-v`, esa carpeta se creará pero lo que tendremos en el contenedor es una carpeta vacía. 
 
+
+Pra más información sobre "bind mount" puedes consultar: [https://docs.docker.com/storage/bind-mounts/](https://docs.docker.com/storage/bind-mounts/)

@@ -17,7 +17,7 @@
     
     
       
-        <title>Asociando almacenamiento a los contenedores: bind mount - Tutorial de Docker</title>
+        <title>Bind Mount - Tutorial de Docker</title>
       
     
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#asociando-almacenamiento-a-los-contenedores-bind-mount" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -115,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Asociando almacenamiento a los contenedores: bind mount
+              Bind Mount
             
           </span>
         </div>
@@ -866,7 +861,7 @@
   
     <li class="md-nav__item">
       <a href="../volumenes/" class="md-nav__link">
-        Volúmenes docker y bind mount
+        Tipos de almacenamiento
       </a>
     </li>
   
@@ -880,7 +875,7 @@
   
     <li class="md-nav__item">
       <a href="../asociacion_volumen/" class="md-nav__link">
-        Asociando almacenamiento a los contenedores.- volúmenes Docker
+        Volúmenes
       </a>
     </li>
   
@@ -899,11 +894,9 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Asociando almacenamiento a los contenedores.- bind mount
+        Bind Mount
       </a>
       
     </li>
@@ -1111,15 +1104,31 @@
                   
 
 
-<h1 id="asociando-almacenamiento-a-los-contenedores-bind-mount">Asociando almacenamiento a los contenedores: bind mount<a class="headerlink" href="#asociando-almacenamiento-a-los-contenedores-bind-mount" title="Permanent link">&para;</a></h1>
+  <h1>Bind Mount</h1>
+
+<h2 id="bind-mounts">Bind mounts<a class="headerlink" href="#bind-mounts" title="Permanent link">&para;</a></h2>
+<p>Si elegimos conseguir la persistencia de los datos de los contenedores usando bind mount lo que estamos haciendo es "mapear" (montar) una parte de mi sistema de ficheros, de la que yo normalmente tengo el control, con una parte del sistema de ficheros del contenedor. Es decir, tipo de persistencia consiste en “montar” un fichero o directorio de la máquina anfitrión en un fichero o directorio del contenedor.<br />
+Este montaje se hace en el momento de crear el contenedor mediante dos parámetros distintos: “-v” que es más simple y “--mount” que es más explícito.<br />
+Con esto conseguimos:</p>
+<ul>
+<li>Compartir ficheros entre el host y los containers.</li>
+<li>Que otras aplicaciones que no sean docker tengan acceso a esos ficheros, ya sean código, ficheros etc...</li>
+</ul>
+<p>Cosas a tener en cuenta:</p>
+<ul>
+<li>El <strong>fichero o directorio se indica en ambos casos con una ruta absoluta</strong> no tiene porque existir en el contenedor (si no existe, se creará).</li>
+<li>El rendimiento de este tipo de persistencia, a efectos prácticos, depende del sistema de ficheros y características hardware de la máquina real. Una buena configuración según las necesidades del contenedor influirá en el rendimiento.</li>
+<li>Estos volúmenes pueden ser usados por varios contenedores simultáneamente.</li>
+<li>En sistemas Linux no suele haber diferencias de rendimiento respecto a volúmenes, pero en sistemas Windows y Mac el rendimiento es peor.</li>
+</ul>
 <h2 id="ejemplo-montando-directorios-usando-bind-mount">Ejemplo: montando directorios usando bind mount<a class="headerlink" href="#ejemplo-montando-directorios-usando-bind-mount" title="Permanent link">&para;</a></h2>
 <p>En este caso vamos a crear un directorio en el sistema de archivo del host, donde vamos a crear un fichero <code>index.html</code>:</p>
 <div class="highlight"><pre><span></span><code>$ mkdir web
 $ <span class="nb">cd</span> web
-/web$ <span class="nb">echo</span> <span class="s2">&quot;&lt;h1&gt;Hola&lt;/h1&gt;&quot;</span> &gt; index.html
+/web$ <span class="nb">echo</span> <span class="s2">&quot;&lt;h1&gt;Montando un bind mount&lt;/h1&gt;&quot;</span> &gt; index.html
 </code></pre></div>
 <p>Y podemos montar ese directorio en un contenedor, en este caso usamos la opción <code>-v</code>:</p>
-<div class="highlight"><pre><span></span><code>$ docker run -d --name my-apache-app -v /home/usuario/web:/usr/local/apache2/htdocs -p <span class="m">8080</span>:80 httpd:2.4
+<div class="highlight"><pre><span></span><code>$ docker run -d --name apa -v /home/usuario/web:/usr/local/apache2/htdocs -p <span class="m">8080</span>:80 httpd:2.4
 8de025f6ff4d4b8a5a57d10a9cbb283b103209f358c43148a4716a33a404e208
 </code></pre></div>
 <p>Y comprobamos que realmente estamos sirviendo el fichero que tenemos en el directorio que hemos creado.</p>
@@ -1127,10 +1136,10 @@ $ <span class="nb">cd</span> web
 &lt;h1&gt;Hola&lt;/h1&gt;
 </code></pre></div>
 <p>Eliminamos el contenedor y volvemos a crear otro con el directorio montado:</p>
-<div class="highlight"><pre><span></span><code>$ docker rm -f my-apache-app 
-my-apache-app
+<div class="highlight"><pre><span></span><code>$ docker rm -f apa
+apa
 
-$ docker run -d --name my-apache-app -v /home/usuario/web:/usr/local/apache2/htdocs -p <span class="m">8080</span>:80 httpd:2.4
+$ docker run -d --name apa1 -v /home/usuario/web:/usr/local/apache2/htdocs -p <span class="m">8080</span>:80 httpd:2.4
 1751b04b0548217d7faa628fd69c10e84c695b0e5cc33b482df2c04a6af83292
 
 $ curl http://localhost:8080
@@ -1142,6 +1151,7 @@ $ curl http://localhost:8080
 &lt;h1&gt;Adios&lt;/h1&gt;
 </code></pre></div>
 <p>Por último, indicar que si nuestra carpeta origen no existe y hacemos un bind mount con <code>-v</code>, esa carpeta se creará pero lo que tendremos en el contenedor es una carpeta vacía. </p>
+<p>Pra más información sobre "bind mount" puedes consultar: <a href="https://docs.docker.com/storage/bind-mounts/">https://docs.docker.com/storage/bind-mounts/</a></p>
 
 
 
@@ -1167,7 +1177,7 @@ $ curl http://localhost:8080
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../asociacion_volumen/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Asociando almacenamiento a los contenedores.- volúmenes Docker" rel="prev">
+        <a href="../asociacion_volumen/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Volúmenes" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1176,7 +1186,7 @@ $ curl http://localhost:8080
               <span class="md-footer__direction">
                 Previous
               </span>
-              Asociando almacenamiento a los contenedores.- volúmenes Docker
+              Volúmenes
             </div>
           </div>
         </a>
