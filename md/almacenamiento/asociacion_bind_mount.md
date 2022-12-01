@@ -1,11 +1,10 @@
----
-layout: default
-title: "Asociando almacenamiento a los contenedores: bind mount"
-nav_order: 3
-parent: Almacenamiento y Redes
----
+“Binding mount”: básicamente este tipo de persistencia consiste en “montar” un fichero o directorio de la máquina anfitrión en un fichero o directorio del contenedor.  
+Este montaje se hace en el momento de crear el contenedor.
+- El fichero o directorio se indica en ambos casos con una ruta absoluta no tiene porque existir en el contenedor (si no existe, se creará) .
+- El rendimiento de este tipo de persistencia, a efectos prácticos, depende del sistema de ficheros y características hardware de la máquina real. Una buena configuración según las necesidades del contenedor influirá en el rendimiento.
+- Estos volúmenes pueden ser usados por varios contenedores simultáneamente.
+- En sistemas Linux no suele haber diferencias de rendimiento respecto a volúmenes, pero en sistemas Windows y Mac el rendimiento es peor.
 
-# Asociando almacenamiento a los contenedores: bind mount
 
 ## Ejemplo: montando directorios usando bind mount
 
@@ -14,13 +13,13 @@ En este caso vamos a crear un directorio en el sistema de archivo del host, dond
 ```bash
 $ mkdir web
 $ cd web
-/web$ echo "<h1>Hola</h1>" > index.html
+/web$ echo "<h1>Montando un bind mount</h1>" > index.html
 ```
 
 Y podemos montar ese directorio en un contenedor, en este caso usamos la opción `-v`:
 
 ```bash
-$ docker run -d --name my-apache-app -v /home/usuario/web:/usr/local/apache2/htdocs -p 8080:80 httpd:2.4
+$ docker run -d --name apa -v /home/usuario/web:/usr/local/apache2/htdocs -p 8080:80 httpd:2.4
 8de025f6ff4d4b8a5a57d10a9cbb283b103209f358c43148a4716a33a404e208
 ```
 
@@ -34,10 +33,10 @@ $ curl http://localhost:8080
 Eliminamos el contenedor y volvemos a crear otro con el directorio montado:
 
 ```bash
-$ docker rm -f my-apache-app 
-my-apache-app
+$ docker rm -f apa
+apa
 
-$ docker run -d --name my-apache-app -v /home/usuario/web:/usr/local/apache2/htdocs -p 8080:80 httpd:2.4
+$ docker run -d --name apa1 -v /home/usuario/web:/usr/local/apache2/htdocs -p 8080:80 httpd:2.4
 1751b04b0548217d7faa628fd69c10e84c695b0e5cc33b482df2c04a6af83292
 
 $ curl http://localhost:8080

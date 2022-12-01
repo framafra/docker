@@ -45,9 +45,9 @@ nav:
         - Redes: redes/redes.md
         - Redes Definidas por el Usuario: redes/redes_usuario.md
     - Almacenamiento en Docker:
-        - Volúmenes docker y bind mount: almacenamiento/volumenes.md
-        - Asociando almacenamiento a los contenedores.- volúmenes Docker: almacenamiento/asociacion_volumen.md
-        - Asociando almacenamiento a los contenedores.- bind mount: almacenamiento/asociacion_bind_mount.md
+        - Tipos de almacenamiento: almacenamiento/volumenes.md
+        - Volúmenes: almacenamiento/asociacion_volumen.md
+        - Bind Mount: almacenamiento/asociacion_bind_mount.md
     - DockerFile:
         - El fichero DockerFile: dockerfile/file_dockerfile.md
         - Instrucciones: dockerfile/instrucciones.md
