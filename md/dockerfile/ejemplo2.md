@@ -15,12 +15,12 @@ EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ```
 
-Al usar una imagen base `debian` tenemos que instalar los paquetes necesarios para tener el servidor web, php y las librerias necesarias. Eliminamos el A continuación añadiremos el contenido del directorio `app` al directorio `/var/www/html/` del contenedor. Hemos borrado el fichero `/var/www/html/index.html` para que no sea el que se muestre por defecto y finalmente indicamos el comando que se deberá ejecutar al crear un contenedor a partir de esta imagen: iniciamos el servidor web en segundo plano.
+Al usar una imagen base `debian` tenemos que instalar los paquetes necesarios para tener el servidor web, php y las librerias necesarias.A continuación añadiremos el contenido del directorio `app` al directorio `/var/www/html/` del contenedor. Borramos el fichero `/var/www/html/index.html` para que no sea el que se muestre por defecto y finalmente indicamos el comando que se deberá ejecutar al crear un contenedor a partir de esta imagen e iniciamos el servidor web en segundo plano.
 
 Para crear la imagen ejecutamos:
 
 ```bash
-$ docker build -t josedom24/ejemplo2:v1 .
+$ docker build -t framafra/ejemplo2:latest .
 ```
 
 Comprobamos que la imagen se ha creado:
@@ -28,13 +28,13 @@ Comprobamos que la imagen se ha creado:
 ```bash
 $ docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-josedom24/ejemplo2     v1                  8c3275799063        1 minute ago      226MB
+framafra/ejemplo2      latest              8c3275799063        1 minute ago       226MB
 ```
 
 Y podemos crear un contenedor:
 
 ```bash
-$ docker run -d -p 80:80 --name ejemplo2 josedom24/ejemplo2:v1
+$ docker run -d -p 80:80 --name ejemplo2 framafra/ejemplo2
 ```
 
 Y acceder con el navegador a nuestra página:
