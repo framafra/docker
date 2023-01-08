@@ -58,6 +58,8 @@ nav:
             - Ejemplo 2.- Construcción de imágenes con una una aplicación PHP: dockerfile/ejemplo2.md
             - Ejemplo 3.- Construcción de imágenes con una una aplicación Python: dockerfile/ejemplo3.md
             - Ejemplo 4.- Construcción de imágenes configurables con variables de entorno: dockerfile/ejemplo4.md
+    - Docker Compose:
+        - ¿Qué es Docker Compose?: docker_compose/dockercompose.md
 theme:
     name: material
     include_search_page: false
