@@ -60,6 +60,7 @@ nav:
             - Ejemplo 4.- Construcción de imágenes configurables con variables de entorno: dockerfile/ejemplo4.md
     - Docker Compose:
         - ¿Qué es Docker Compose?: docker_compose/dockercompose.md
+        - Instalación de Docker Compose: docker_compose/instalacion.md
 theme:
     name: material
     include_search_page: false

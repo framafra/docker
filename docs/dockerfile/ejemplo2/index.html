@@ -1091,6 +1091,68 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Docker Compose
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker Compose" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Docker Compose
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_compose/dockercompose/" class="md-nav__link">
+        ¿Qué es Docker Compose?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker_compose/instalacion/" class="md-nav__link">
+        Instalación de Docker Compose
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1119,17 +1181,17 @@
 <span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/apache2ctl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-D&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FOREGROUND&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p>Al usar una imagen base <code>debian</code> tenemos que instalar los paquetes necesarios para tener el servidor web, php y las librerias necesarias. Eliminamos el A continuación añadiremos el contenido del directorio <code>app</code> al directorio <code>/var/www/html/</code> del contenedor. Hemos borrado el fichero <code>/var/www/html/index.html</code> para que no sea el que se muestre por defecto y finalmente indicamos el comando que se deberá ejecutar al crear un contenedor a partir de esta imagen: iniciamos el servidor web en segundo plano.</p>
+<p>Al usar una imagen base <code>debian</code> tenemos que instalar los paquetes necesarios para tener el servidor web, php y las librerias necesarias.A continuación añadiremos el contenido del directorio <code>app</code> al directorio <code>/var/www/html/</code> del contenedor. Borramos el fichero <code>/var/www/html/index.html</code> para que no sea el que se muestre por defecto y finalmente indicamos el comando que se deberá ejecutar al crear un contenedor a partir de esta imagen e iniciamos el servidor web en segundo plano.</p>
 <p>Para crear la imagen ejecutamos:</p>
-<div class="highlight"><pre><span></span><code>$ docker build -t josedom24/ejemplo2:v1 .
+<div class="highlight"><pre><span></span><code>$ docker build -t framafra/ejemplo2:latest .
 </code></pre></div>
 <p>Comprobamos que la imagen se ha creado:</p>
 <div class="highlight"><pre><span></span><code>$ docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-josedom24/ejemplo2     v1                  8c3275799063        <span class="m">1</span> minute ago      226MB
+framafra/ejemplo2      latest              8c3275799063        <span class="m">1</span> minute ago       226MB
 </code></pre></div>
 <p>Y podemos crear un contenedor:</p>
-<div class="highlight"><pre><span></span><code>$ docker run -d -p <span class="m">80</span>:80 --name ejemplo2 josedom24/ejemplo2:v1
+<div class="highlight"><pre><span></span><code>$ docker run -d -p <span class="m">80</span>:80 --name ejemplo2 framafra/ejemplo2
 </code></pre></div>
 <p>Y acceder con el navegador a nuestra página:</p>
 <p><img alt="ejemplo2" src="../../images/ejemplo2.png" /></p>
