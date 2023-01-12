@@ -1,0 +1,133 @@
+site_name: Curso de Docker
+site_author: Paco Mañó
+site_url: https://github.com/framafra/docker
+docs_dir: 'md'
+site_dir: 'docs'
+repo_url: https://github.com/framafra/docker #para mostrar un link al repositorio
+repo_name: framafra/docker
+
+edit_uri: '' #Suprimir el icono de edición (https://www.mkdocs.org/user-guide/configuration/#edit_uri)
+
+nav:
+    - Docker:
+        - ¿Qué es Docker?: docker/docker.md
+        - ¿Qué es una imagen y un contenedor?: docker/imagenvscontenedor.md
+    - Primeros paso:
+        - Instalación: primeros_pasos/instalacion.md
+        - Uso Básico: primeros_pasos/usobasico.md
+        - Hello World de Docker: primeros_pasos/hello.md
+    - Contenedores:
+        - Crear Contenedores - Docker Run: contenedores/dockerun.md
+        - Arrancar/Parar Contenedores: contenedores/arrancar_parar.md
+        - Listar Contenedores: contenedores/listar.md
+        - Inspeccionar Contenedores: contenedores/inspect.md
+        - Ejecutar comandos: contenedores/ejecutar_comando.md
+        - Copiar ficheros entre anfitrión y contenedores: contenedores/copiar.md
+        - Renombrar Contenedores: contenedores/renombrar.md
+        - Eliminar contenedores: contenedores/eliminar.md
+        - Ejemplos:
+            - Ejecución de un contenedor simple: contenedores/ejemplos/simple.md
+            - Ejecución de un contenedor interactivo: contenedores/ejemplos/interactivo.md
+            - Creando un contenedor demonio: contenedores/ejemplos/demonio.md
+            - Creando un contenedor con un servidor web: contenedores/ejemplos/web.md
+            - Configuración de contenedores con variables de entorno: contenedores/ejemplos/variables.md
+    - Imágenes:
+        - Registro de Imágenes.- DockerHub : imagenes/registro.md
+        - Gestión de Imágenes: imagenes/gestion.md
+        - ¿Cómo se organizan las imágenes?: imagenes/organizacion.md
+        - Creación de contenedores desde imágenes: imagenes/creacion_contenedores.md
+        - Creación de imágenes desde contenedores: imagenes/creacion_imagenes.md
+        - Creación de imágenes con Dockerfile: imagenes/creacion_imagenes_dockerfile.md
+        - Subir imágenes a Docker Hub: imagenes/subir_imagen_dockerhub.md
+        - Exportar/Importar imágenes locales: imagenes/exportar_importar.md
+        - Ejemplo.- Desplegando la aplicación mediawiki: imagenes/mediawiki.md
+    -  Redes en Docker:
+        - Redes: redes/redes.md
+        - Redes Definidas por el Usuario: redes/redes_usuario.md
+    - Almacenamiento en Docker:
+        - Tipos de almacenamiento: almacenamiento/volumenes.md
+        - Volúmenes: almacenamiento/asociacion_volumen.md
+        - Bind Mount: almacenamiento/asociacion_bind_mount.md
+    - DockerFile:
+        - El fichero DockerFile: dockerfile/file_dockerfile.md
+        - Instrucciones: dockerfile/instrucciones.md
+        - Construyendo imágenes con docker build: dockerfile/dockerbuild.md
+        - Buenas prácticas al crear Dockerfile: dockerfile/buenas_practicas.md
+        - Ejemplos:
+            - Ejemplo 1.- Construcción de imágenes con una página estática: dockerfile/ejemplo1.md
+            - Ejemplo 2.- Construcción de imágenes con una una aplicación PHP: dockerfile/ejemplo2.md
+            - Ejemplo 3.- Construcción de imágenes con una una aplicación Python: dockerfile/ejemplo3.md
+    - Docker Compose:
+        - ¿Qué es Docker Compose?: docker_compose/dockercompose.md
+        - Instalación de Docker Compose: docker_compose/instalacion.md
+        - Fichero docker-compose.yml: docker_compose/fichero.md
+        - Comandos docker-compose: docker_compose/comandos.md
+        - Almacenamiento con docker-compose: docker_compose/almacenamiento.md
+        - Ejemplos:
+            - Ejemplo 1.- Despliegue aplicación guestbook: docker_compose/ejemplo1.md
+            - Ejemplo 2.- Despliegue de la aplicación Temperaturas: docker_compose/ejemplo2.md
+            - Ejemplo 3.- Despliegue de WordPress + Mariadb: docker_compose/ejemplo3.md
+            - Ejemplo 4.- Construcción de imágenes configurables con variables de entorno: docker_compose/ejemplo4.md
+            
+theme:
+    name: material
+    include_search_page: false
+    font:
+        code: Roboto
+        text: Baloo 2
+    palette: 
+      scheme: default
+      primary: teal
+      accent: green
+    favicon: images/docker.png    
+    features:
+        #- header.autohide
+        - toc.follow0
+        - toc.integrate
+        - search.suggest
+        #- navigation.tabs
+        #- navigation.tabs.sticky
+        - navigation.top
+    logo: images/docker.png
+    icon:
+        admonition:
+            note: octicons/alert-24
+            example: octicons/book-16
+extra:
+    generator: false #Muestra en el pie de página que se ha realizado con Mkdocs
+    social:
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<fj.manofrasquet@edu.gva.es>
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+    - abbr
+    - admonition
+    - attr_list
+    - def_list
+    - footnotes
+    - md_in_html
+    - toc:
+        permalink: true
+        toc_depth: 1
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.highlight
+    - pymdownx.inlinehilite
+    - pymdownx.keys
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tilde       
