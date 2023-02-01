@@ -70,4 +70,7 @@ ec77cfd20583        bridge              bridge              local
     Prueba acceder directamente al puerto 80 del servidor para ver la página web.
 
 ### Red None
-* La red **none** no configurará ninguna IP para el contenedor y no tiene acceso a la red externa ni a otros contenedores. Tiene la dirección loopback y se puede usar para ejecutar trabajos por lotes.
+* La red **none** no configurará ninguna IP para el contenedor y no tiene acceso a la red externa ni a otros contenedores. Tiene la dirección loopback y se puede usar para ejecutar trabajos por lotes.   
+
+
+Paco
